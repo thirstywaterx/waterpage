@@ -1,0 +1,13 @@
+{
+    "title": "Sponsor - Thirsty Water",
+    "h1": "Sponsor",
+    "p": "If you are interested in my project, you can offer me a small amount of support, and I will be deeply grateful!",
+    "payment-1": "Alipay",
+    "text-1": "Please open the 'Alipay' app on your phone to scan the QR code",
+    "payment-2": "USDT-TRC20",
+    "text-2": "You can send your USDT-TRC20 to this wallet address, long press and select all to copy",
+    "payment-3": "PayPal",
+    "button": "Confirm",
+    "warning": "This address only accepts USDT-TRC20",
+    "payment-4": "Bank Card"
+}

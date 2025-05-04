@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="description" content="欢迎来到我的个人主页，我将在这里对我进行简要的介绍，以及分享我的项目与经验。" data-i18n="description">
+    <meta name="keywords" content="个人主页, 口渴的水, 柔水, thirstywater" data-i18n="keywords">
+    <link rel="shortcut icon" href="https://i.stardots.io/thirstywater/1746190897225.png" type="image/x-icon">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title data-i18n="title">口渴的水 - 我的个人主页</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        :not(:defined) {
+            display: none;
+        }
+
+        s-appbar {
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 6;
+            top: 0;
+        }
+
+        s-menu {
+            height: 100vh;
+            z-index: 6;
+        }
+
+        @media (max-width: 600px) {
+            s-menu {
+                position: fixed;
+            }
+        }
+
+
+        s-menu-item {
+            width: 175px;
+        }
+
+        @media (max-width: 600px) {
+            s-menu {
+                margin-top: 56px;
+            }
+        }
+
+        s-menu h2 {
+            margin-left: 13px;
+            font-weight: 400;
+        }
+
+        #menu-title {
+            font-size: 15px;
+            margin-left: 13px;
+            margin-top: 20px;
+        }
+
+        .content {
+            padding: 10px;
+            margin-top: 56px;
+        }
+
+        /* 动画容器 */
+        .animation-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            height: auto;
+            max-width: 100px;
+            /* 减小logo尺寸 */
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            /* 减小文字尺寸 */
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(-20px);
+            /* 减小位移距离 */
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        #introduce {
+            width: 100%;
+        }
+
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* 卡片之间的间距 */
+            /* 水平居中 */
+            justify-content: center;
+        }
+
+        #cards:first-child {
+            margin-top: 60px;
+        }
+
+        #cards img {
+            height: 130px;
+        }
+
+        #cards s-card {
+            flex: 1 1 calc(33.33% - 20px);
+            /* 每张卡片占大约1/3宽度，减去间距 */
+            max-width: calc(33.33% - 20px);
+            /* 限制最大宽度 */
+            box-sizing: border-box;
+            /* 确保padding和border不影响宽度 */
+        }
+
+        /* 响应式调整：屏幕较小时显示两列或一列 */
+        @media (max-width: 900px) {
+            #cards s-card {
+                flex: 1 1 calc(50% - 20px);
+                /* 两列 */
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            #cards s-card {
+                flex: 1 1 100%;
+                /* 一列 */
+                max-width: 100%;
+            }
+        }
+
+        #explore,
+        #language {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #language {
+            margin-top: 15px;
+            box-sizing: border-box;
+        }
+
+        /* Default: 3 cards per row (screen > 900px) */
+        #language {
+            min-width: calc((33.33% * 2) + (-15px * 2));
+            /* 3 cards + 2 gaps */
+        }
+
+        #logos {
+            font-size: 30px;
+            padding: 10px;
+            padding-left: 15px;
+        }
+
+        #tags,
+        #uploader {
+            margin-top: 15px;
+            padding: 10px;
+        }
+
+        #uploader {
+            min-height: 145px;
+            display: flex;
+            text-align: center;
+        }
+
+        #uploader svg {
+            width: 50px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: -30px;
+        }
+
+        #uploader h2 {
+            margin-top: 75px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 400;
+        }
+
+        s-chip {
+            margin: 2px;
+        }
+
+        /* 1 card per row (screen ≤ 600px) */
+        @media (max-width: 600px) {
+            #language {
+                min-width: 100%;
+                /* 1 card, full width */
+            }
+
+            #uploader {
+                margin-top: 0;
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-text {
+                margin-left: 0;
+                margin-top: 10px;
+                font-size: 1.3rem;
+            }
+
+            .logo-image {
+                max-width: 80px;
+            }
+        }
+
+        #site-footer {
+            width: 100%;
+            min-height: 152px;
+            background-color: #E9EEF6b;
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: var(--s-on-surface);
+            /* 使用Sober的文本颜色变量 */
+            transition: background-color 0.3s, color 0.3s;
+            /* 平滑过渡效果 */
+        }
+
+        .footer-content {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo-img {
+            height: 40px;
+            width: auto;
+            /* 将通过JavaScript控制滤镜 */
+        }
+
+        .footer-logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-link {
+            font-size: 22px;
+            color: var(--s-on-surface);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--s-primary);
+        }
+
+        .footer-copyright {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .footer-logo {
+                flex-direction: column;
+            }
+        }
+
+        s-page .changecolor {
+            transition: filter 0.3s ease;
+        }
+    </style>
+</head>
+
+<body data-barba="wrapper">
+    <s-page theme="light">
+        <!-- 侧边导航栏 -->
+        <s-drawer>
+            <div slot="start" style="width: 190px;">
+                <s-menu>
+                    <div id="navcontent">
+                        <div slot="label" id="menu-title" data-i18n="navigation">导航</div>
+                        <h2>THIRSTYWATER</h2>
+                        <s-menu-item data-page="index" checked="true" id="home">
+                            <s-icon slot="start" name="home"></s-icon>
+                            <p data-i18n="home">主页</p>
+                        </s-menu-item>
+                        <s-menu-item data-page="projects" id="projects">
+                            <s-icon slot="start">
+                                <svg viewBox="0 -960 960 960">
+                                    <path d="M280-720v-40q0-33 23.5-56.5T360-840h240q33 0 56.5 23.5T680-760v40h28q24 0 43.5 13.5T780-672l94 216q3 8 4.5 16t1.5 16v184q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-184q0-8 1.5-16t4.5-16l94-216q9-21 28.5-34.5T252-720h28Zm80 0h240v-40H360v40Zm-80 240v-40h80v40h240v-40h80v40h96l-68-160H252l-68 160h96Zm0 80H160v160h640v-160H680v40h-80v-40H360v40h-80v-40Zm200-40Zm0-40Zm0 80Z"></path>
+                                </svg>
+                            </s-icon>
+                            <p data-i18n="projects">项目</p>
+                        </s-menu-item>
+                        <s-menu-item data-page="donate" id="contact">
+                            <s-icon slot="start">
+                                <svg viewBox="0 -960 960 960">
+                                    <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"></path>
+                                </svg>
+                            </s-icon>
+                            <p data-i18n="donate">赞助我</p>
+                        </s-menu-item>
+                    </div>
+                </s-menu>
+            </div>
+
+
+            <!-- 顶部应用栏 -->
+            <s-appbar>
+                <s-icon-button slot="navigation" onclick="document.querySelector('s-drawer').toggle();">
+                    <s-icon name="menu"></s-icon>
+                </s-icon-button>
+                <div slot="headline" data-i18n="headline">口渴的水</div>
+                <s-picker slot="action" id="language-switcher">
+                    <s-tooltip slot="trigger">
+                        <s-icon-button slot="trigger">
+                            <svg viewBox="0 -960 960 960">
+                                <path d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T484-720H40v-80h280v-80h80v80h280v80H564q-21 72-63 148t-83 116l96 98-30 82-122-125-202 201Zm468-72h144l-72-204-72 204Z"></path>
+                            </svg>
+                        </s-icon-button>
+                        多语言
+                    </s-tooltip>
+                    <s-picker-item value="zh" selected="true">中文</s-picker-item>
+                    <s-picker-item value="en">English</s-picker-item>
+                </s-picker>
+                <s-tooltip slot="action">
+                    <s-icon-button slot="trigger" id="toggleTheme">
+                        <s-icon name="light_mode" id="modebutton"></s-icon>
+                    </s-icon-button>
+                    切换主题
+                </s-tooltip>
+            </s-appbar>
+
+
+            <div class="content" data-barba="container">
+                <!-- 动画容器 -->
+                <div class="animation-container">
+                    <div class="logo-container">
+                        <img src="https://i.stardots.io/thirstywater/1746189728615.svg" class="logo-image" alt="ThirstyWater Logo">
+                        <div class="logo-text">THIRSTYWATER</div>
+                    </div>
+                </div>
+
+                <s-button type="outlined" id="explore" onclick="document.getElementById('target').scrollIntoView({ behavior: 'smooth' });" data-i18n="explore">探索</s-button>
+
+                <div id="introduce">
+                    <div id="cards">
+                        <s-card type="outlined" clickable="true" class="aboutme">
+                            <img slot="image" src="https://pic1.imgdb.cn/item/6814dadd58cb8da5c8d7056f.jpg">
+                            <div slot="headline" data-i18n="aboutme_headline_1">简介</div>
+                            <div slot="text" data-i18n="aboutme_text_1">我是口渴的水(ThirstyWater)，你也可以叫我"柔水"。我是一名程序员，专攻于网络技术方面的开发</div>
+                        </s-card>
+                        <s-card type="outlined" clickable="true" class="aboutme" id="target">
+                            <img slot="image" src="https://pic1.imgdb.cn/item/6814e2ce58cb8da5c8d70830.jpg">
+                            <div slot="headline" data-i18n="aboutme_headline_2">泡泡</div>
+                            <div slot="text" data-i18n="aboutme_text_2">我有一个特别小众的爱好，就是"泡泡"，我喜欢看那些女孩子被包裹在泡泡里面轻飘飘的图片，感觉真的会很可爱www</div>
+                        </s-card>
+                    </div>
+
+                    <s-card type="outlined" clickable="true" class="aboutme" id="language">
+                        <s-fold folded="true">
+                            <div slot="trigger" style="width: 100%;margin-left: 15px;display: flex;">
+                                <p data-i18n="language_trigger">所学技术</p><s-icon name="chevron_down" style="margin-top: -2px;"></s-icon>
+                            </div>
+                            <div id="logos">
+                                <i class="fa-brands fa-html5" style="color:#DA4929"></i>
+                                <i class="fa-brands fa-css" style="color:#0F6CAA"></i>
+                                <i class="fa-brands fa-js" style="color:#E6DD2B"></i>
+                                <i class="fa-brands fa-php" style="color:#4D598E"></i>
+                                <i class="fa-brands fa-java" style="color:orange"></i>
+                            </div>
+                        </s-fold>
+                    </s-card>
+
+                    <div id="cards">
+                        <s-card type="outlined" clickable="true" class="aboutme" id="tags">
+                            <s-chip clickable="true" data-i18n="chip_1">泡泡恋物癖</s-chip>
+                            <s-chip clickable="true" data-i18n="chip_2">GO学长</s-chip>
+                            <s-chip clickable="true" data-i18n="chip_3">Beyond</s-chip>
+                            <s-chip clickable="true" data-i18n="chip_4">半条命系列爱好者</s-chip>
+                            <s-chip clickable="true" data-i18n="chip_5">捣蛋猪</s-chip>
+                            <s-chip clickable="true" data-i18n="chip_6">光圈科技</s-chip>
+                        </s-card>
+                        <s-card type="outlined" clickable="true" class="aboutme" id="uploader">
+                            <svg viewBox="0 -960 960 960" class="changecolor">
+                                <path d="m160-800 80 160h120l-80-160h80l80 160h120l-80-160h80l80 160h120l-80-160h120q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800Zm0 240v320h640v-320H160Zm0 0v320-320Z"></path>
+                            </svg>
+                            <h2 data-i18n="uploader_headline">视频创作者</h2>
+                        </s-card>
+                    </div>
+                </div>
+            </div>
+
+
+            <footer id="site-footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="https://i.stardots.io/thirstywater/1746189728615.svg" alt="ThirstyWater Logo" class="footer-logo-img changecolor">
+                        <span class="footer-logo-text" data-i18n="footer_logo_text">THIRSTYWATER</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="https://github.com/thirstywaterx" class="footer-link"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://space.bilibili.com/387241750" class="footer-link"><i class="fa-brands fa-bilibili"></i></a>
+                        <a href="mailto:thirstywaterx@outlook.com" class="footer-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <div class="footer-copyright" data-i18n="footer_copyright">
+                        © 2025 ThirstyWater. All rights reserved.
+                    </div>
+                </div>
+            </footer>
+        </s-drawer>
+    </s-page>
+    <script src="https://cdn.jsdmirror.com/npm/@barba/core"></script>
+    <script src="https://cdn.jsdmirror.com/npm/i18next@23.15.1/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdmirror.com/npm/i18next-http-backend@2.4.3/dist/umd/i18nextHttpBackend.min.js"></script>
+    <script type="module" src="https://cdn.jsdmirror.com/npm/sober@1.1.2/dist/sober.min.js"></script>
+    <script>
+        // Global variable to track theme state  
+        let currentTheme = 'light';
+        let currentLang = 'zh'; // Default language
+        let translations = {}; // Store current translations
+
+        // Function to get current page name from URL
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            const pageName = path.split('/').pop().split('.')[0] || 'index';
+            return pageName;
+        }
+
+        // Function to load language file
+        async function loadLanguageFile(lang, pageName) {
+            try {
+                // If pageName is not provided, get it from current URL
+                const currentPage = pageName || getCurrentPageName();
+                const response = await fetch(`/locales/${lang}/${currentPage}.json`);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to load language file: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(`Error loading language file for ${pageName}:`, error);
+                // Fallback to empty translations if file can't be loaded
+                return {};
+            }
+        }
+
+        // Function to update the page content with translations
+        async function updateContent(pageName) {
+            // Load translations for the specific page
+            translations = await loadLanguageFile(currentLang, pageName);
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[key]) {
+                    element.textContent = translations[key];
+                }
+            });
+
+            // Update document metadata
+            if (translations.title) document.title = translations.title;
+
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription && translations.description) {
+                metaDescription.setAttribute('content', translations.description);
+            }
+
+            const metaKeywords = document.querySelector('meta[name="keywords"]');
+            if (metaKeywords && translations.keywords) {
+                metaKeywords.setAttribute('content', translations.keywords);
+            }
+        }
+
+        // Function to update the logo filter based on the current theme  
+        function updateLogoFilter() {
+            // Get all elements that need updating
+            const logoImage = document.querySelector('.logo-image');
+            const changeColorElements = document.querySelectorAll(".changecolor");
+            const siteFooter = document.querySelector("#site-footer");
+
+            // Update main logo filter
+            if (logoImage) {
+                logoImage.style.filter = currentTheme === 'dark' ? 'invert(100%)' : 'none';
+            }
+
+            // Update all elements with changecolor class
+            for (let i = 0; i < changeColorElements.length; i++) {
+                changeColorElements[i].style.filter = currentTheme === 'dark' ? 'invert(100%)' : 'none';
+            }
+
+            // Update footer background color
+            if (siteFooter) {
+                siteFooter.style.backgroundColor = currentTheme === 'dark' ? 'black' : '#E9EEF6';
+            }
+
+            // Update theme icon
+            const modeButton = document.querySelector("#modebutton");
+            if (modeButton) {
+                modeButton.name = currentTheme === 'dark' ? 'dark_mode' : 'light_mode';
+            }
+        }
+
+        // Function to toggle theme  
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            const page = document.querySelector('s-page');
+            const toggleThemeButton = document.querySelector('#toggleTheme');
+
+            if (page && toggleThemeButton) {
+                page.toggle(currentTheme, toggleThemeButton);
+                updateLogoFilter();
+            }
+
+            // Store theme preference
+            localStorage.setItem('preferredTheme', currentTheme);
+        }
+
+        // Function to change language
+        async function changeLanguage(lang) {
+            currentLang = lang;
+            // Get current page name for loading correct translations
+            const pageName = getCurrentPageName();
+            await updateContent(pageName);
+
+            // Store language preference
+            localStorage.setItem('preferredLanguage', currentLang);
+            // Dispatch event for other components to react
+            document.dispatchEvent(new CustomEvent('languageChanged', {
+                detail: {
+                    lang: currentLang
+                }
+            }));
+        }
+
+        // Run logo animation
+        function runLogoAnimation() {
+            const logoImage = document.querySelector('.logo-image');
+            const logoText = document.querySelector('.logo-text');
+
+            if (!logoImage || !logoText) return;
+
+            // Initialize animation state  
+            logoImage.style.opacity = '0';
+            logoImage.style.transform = 'scale(0.5)';
+            logoText.style.opacity = '0';
+            logoText.style.transform = 'translateX(-20px)';
+
+            // Animation first stage: Image fade-in and scale up  
+            setTimeout(() => {
+                logoImage.style.opacity = '1';
+                logoImage.style.transform = 'scale(1)';
+
+                // Animation second stage: Image move, text slide in  
+                setTimeout(() => {
+                    if (window.innerWidth <= 600) {
+                        // Vertical layout for mobile  
+                        logoImage.style.transform = 'translateY(5px)';
+                    } else {
+                        // Horizontal layout for desktop  
+                        logoImage.style.transform = 'translateX(-10%)';
+                    }
+
+                    logoText.style.opacity = '1';
+                    logoText.style.transform = 'translateX(0)';
+                }, 300);
+            }, 200);
+
+            // Ensure the logo filter is applied after animation  
+            updateLogoFilter();
+        }
+
+        // Initialize page UI elements and events
+        function initPageUI() {
+            // Set up theme toggle button click event
+            const toggleThemeButton = document.querySelector('#toggleTheme');
+            if (toggleThemeButton) {
+                toggleThemeButton.onclick = toggleTheme;
+            }
+
+            // Set up language switcher change event
+            const languageSwitcher = document.getElementById('language-switcher');
+            if (languageSwitcher) {
+                languageSwitcher.addEventListener('change', (e) => {
+                    changeLanguage(e.target.value);
+                });
+
+                // Initialize language picker to match current language
+                const selectedOption = languageSwitcher.querySelector(`s-picker-item[value="${currentLang}"]`);
+                if (selectedOption) {
+                    selectedOption.setAttribute('selected', 'true');
+                }
+            }
+
+            // Run logo animation if on homepage or where logo exists
+            if (document.querySelector('.logo-container')) {
+                runLogoAnimation();
+            }
+
+            // Apply current theme
+            updateLogoFilter();
+
+            // Add menu item click events
+            document.querySelectorAll('s-menu-item').forEach(menuItem => {
+                menuItem.addEventListener('click', (event) => {
+                    const menuItem = event.target.closest('s-menu-item');
+                    const isChecked = menuItem.hasAttribute('checked');
+                    const pageName = menuItem.getAttribute('data-page');
+                    const url = pageName + '.html';
+
+                    // If menu item is already checked, just close the drawer without page transition
+                    if (isChecked) {
+                        return;
+                    }
+
+                    // Update checked state  
+                    document.querySelectorAll('s-menu-item').forEach(item => {
+                        item.removeAttribute('checked');
+                    });
+                    menuItem.setAttribute('checked', 'true');
+
+                    // Close the drawer before page transition
+                    document.querySelector('s-drawer').toggle();
+
+                    // Perform page transition  
+                    barba.go(url);
+                });
+            });
+        }
+
+        // Initialize everything
+        async function initPage() {
+            // Get user preferences from localStorage
+            const storedLang = localStorage.getItem('preferredLanguage');
+            const storedTheme = localStorage.getItem('preferredTheme');
+
+            // Apply stored preferences if available
+            if (storedLang) {
+                currentLang = storedLang;
+            }
+
+            if (storedTheme) {
+                currentTheme = storedTheme;
+                const page = document.querySelector('s-page');
+                if (page) {
+                    page.setAttribute('theme', currentTheme);
+                }
+            }
+
+            // Initialize UI elements
+            initPageUI();
+
+            // Load translations for current page
+            await updateContent(getCurrentPageName());
+        }
+
+        // Listen for DOMContentLoaded to initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            initPage();
+        });
+
+        // Barba.js initialization  
+        barba.init({
+            transitions: [{
+                name: 'fade',
+                async leave(data) {
+                    // Optional: Add any cleanup if needed
+                    // You could add animation here if desired
+                },
+                async enter(data) {
+                    // Get the new page name from the URL
+                    const newPageName = data.next.url.path.split('/').pop().split('.')[0] || 'index';
+
+                    // Update active menu item
+                    document.querySelectorAll('s-menu-item').forEach(item => {
+                        const itemPage = item.getAttribute('data-page');
+                        if (itemPage === newPageName) {
+                            item.setAttribute('checked', 'true');
+                        } else {
+                            item.removeAttribute('checked');
+                        }
+                    });
+
+                    // Load translations for the new page
+                    await updateContent(newPageName);
+
+                    // Re-initialize UI elements
+                    initPageUI();
+
+                    // Ensure theme settings are applied
+                    const page = document.querySelector('s-page');
+                    if (page) {
+                        page.setAttribute('theme', currentTheme);
+                        updateLogoFilter();
+                    }
+                }
+            }]
+        });
+    </script>
+
+
+</body>
+
+</html>

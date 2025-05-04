@@ -1,0 +1,163 @@
+<meta name="keywords" content="个人主页, 口渴的水, 柔水, thirstywater">
+<div class="content" data-barba="container">
+    <title data-i18n="title">赞助 - 口渴的水</title>
+    <style>
+        h1 {
+            font-weight: 400;
+        }
+
+        #info,
+        h1 {
+            text-align: center;
+        }
+
+        #info {
+            margin-bottom: 20px;
+        }
+
+        #content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+            flex-direction: column
+        }
+
+        #content s-ripple {
+            width: 260px;
+            height: 70px;
+            border-radius: 5px;
+        }
+
+        #content i {
+            font-size: 50px;
+            margin-right: 20px;
+        }
+
+        #content svg {
+            width: 50px;
+            margin-right: 20px;
+            margin-left: -3px;
+        }
+
+        #content img {
+            width: 180px;
+            height: 180px;
+            border-radius: 5px;
+            margin-top: 25px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .block {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+        }
+
+        #content s-icon {
+            position: absolute;
+            float: right;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        s-divider {
+            width: 260px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        s-text-field {
+            max-width: 80%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            margin-top: 20px;
+        }
+
+        s-alert {
+            width: 80%;
+            margin-top: 20px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    </style>
+
+    <h1 data-i18n="h1">赞助</h1>
+    <p id="info" data-i18n="p"></p>
+
+    <div id="content">
+
+        <s-dialog>
+            <s-ripple slot="trigger">
+                <div class="block">
+                    <i class="fa-brands fa-alipay" style="color: #1677FF;"></i>
+                    <p data-i18n="payment-1"></p>
+                </div>
+                <s-icon name="chevron_right"></s-icon>
+            </s-ripple>
+            <div slot="headline" data-i18n="payment-1"></div>
+            <div slot="text" data-i18n="text-1"></div>
+            <img src="https://i.stardots.io/thirstywater/1746275199281.png">
+            <s-button slot="action" type="text" data-i18n="button"></s-button>
+        </s-dialog>
+
+        <s-divider></s-divider><br>
+
+        <s-dialog>
+            <s-ripple slot="trigger">
+                <div class="block">
+                    <svg t="1746278058527" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1497" width="50" height="50">
+                        <path d="M1023.082985 511.821692c0 281.370746-228.08199 509.452736-509.452736 509.452736-281.360557 0-509.452736-228.08199-509.452737-509.452736 0-281.365652 228.092179-509.452736 509.452737-509.452737 281.370746 0 509.452736 228.087085 509.452736 509.452737" fill="#1BA27A" p-id="1498"></path>
+                        <path d="M752.731701 259.265592h-482.400796v116.460896h182.969951v171.176119h116.460895v-171.176119h182.96995z" fill="#FFFFFF" p-id="1499"></path>
+                        <path d="M512.636816 565.13592c-151.358408 0-274.070289-23.954468-274.070289-53.50782 0-29.548259 122.706786-53.507821 274.070289-53.507821 151.358408 0 274.065194 23.959562 274.065194 53.507821 0 29.553353-122.706786 53.507821-274.065194 53.50782m307.734925-44.587303c0-38.107065-137.776398-68.995184-307.734925-68.995184-169.953433 0-307.74002 30.888119-307.74002 68.995184 0 33.557652 106.837333 61.516418 248.409154 67.711363v245.729433h116.450707v-245.632637c142.66205-6.001353 250.615085-34.077294 250.615084-67.808159" fill="#FFFFFF" p-id="1500"></path>
+                    </svg>
+                    <p data-i18n="payment-2" style="margin-left: -5px;"></p>
+                </div>
+                <s-icon name="chevron_right"></s-icon>
+            </s-ripple>
+            <div slot="headline" data-i18n="payment-2"></div>
+            <div slot="text" data-i18n="text-2"></div>
+            <s-text-field type="multiLine" style="display: grid; width: auto" value="TMyeMQWrBZ3GRAjUPavKfos7fcWeXL4H7D" readOnly="true"></s-text-field>
+            <s-alert type="warning" data-i18n="warning"></s-alert>
+            <s-button slot="action" type="text" data-i18n="button"></s-button>
+        </s-dialog>
+
+        <s-divider></s-divider><br>
+
+        <s-ripple onclick="javascript:window.open('https://www.paypal.me/thirstywater96')">
+            <div class="block" style="display: flex; align-items: center;">
+                <svg t="1746280414011" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2498" width="50" height="50">
+                    <path d="M449.28 241.002667H738.133333c155.093333 0 213.461333 78.506667 204.458667 194.005333-14.869333 190.442667-130.005333 295.744-282.730667 295.744h-77.098666c-20.906667 0-35.008 13.824-40.704 51.413333l-33.066667 218.325334c-2.154667 14.165333-9.6 22.506667-20.821333 23.509333h-181.12c-17.045333 0-23.104-13.034667-18.645334-41.28l110.613334-700.288c4.416-28.074667 19.776-41.429333 50.282666-41.429333z" fill="#009DE2" p-id="2499"></path>
+                    <path d="M268.714667 0H557.866667c81.450667 0 178.026667 2.645333 242.645333 59.626667 43.157333 38.058667 65.792 98.709333 60.586667 163.84C843.306667 444.202667 711.253333 567.893333 534.186667 567.893333h-142.613334c-24.277333 0-40.362667 16.064-47.210666 59.626667l-39.786667 253.141333c-2.56 16.426667-9.706667 26.112-22.698667 27.264H103.765333c-19.754667 0-26.773333-15.104-21.610666-47.850666L210.410667 48.042667C215.530667 15.488 233.344 0 268.714667 0z" fill="#113984" p-id="2500"></path>
+                    <path d="M348.522667 602.005333l50.496-319.573333c4.416-28.074667 19.776-41.429333 50.282666-41.429333H738.133333c47.808 0 86.442667 7.466667 116.714667 21.226666-29.013333 196.48-156.096 305.664-322.538667 305.664H389.76c-18.773333 0-32.789333 9.6-41.216 34.112z" fill="#172C70" p-id="2501"></path>
+                </svg>
+                <p data-i18n="payment-3" style="margin-left: -3px;"></p>
+            </div>
+            <s-icon name="chevron_right"></s-icon>
+        </s-ripple>
+
+        <s-divider></s-divider><br>
+
+        <s-ripple onclick="javascript:window.open('https://buymeacoffee.com/thirstywaterx')">
+            <div class="block" style="display: flex; align-items: center;">
+                <svg t="1746337292508" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5101" width="200" height="200">
+                    <path d="M0 430.848l0 399.616c0 39.168 31.744 70.912 70.912 70.912l881.92 0c39.168 0 70.912-31.744 70.912-70.912L1023.744 430.848 0 430.848zM462.08 714.752l-332.8 0 0-121.856 332.8 0L462.08 714.752z" fill="#7C88FF" p-id="5102"></path>
+                    <path d="M1024 307.968l0-114.176c0-39.168-31.744-70.912-70.912-70.912L70.912 122.88c-39.168 0-70.912 31.744-70.912 70.912l0 114.176L1024 307.968z" fill="#7C88FF" p-id="5103"></path>
+                </svg>
+                <p data-i18n="payment-4" style="margin-left: -3px;"></p>
+            </div>
+            <s-icon name="chevron_right"></s-icon>
+        </s-ripple>
+
+    </div>
+
+    <script type="module" src="https://cdn.jsdmirror.com/npm/sober@1.1.2/dist/sober.min.js"></script>
+</div>

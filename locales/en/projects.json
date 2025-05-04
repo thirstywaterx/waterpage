@@ -1,0 +1,13 @@
+{
+ "title": "Projects - Thirsty Water",
+ "h1": "My Projects",
+ "p": "This section showcases projects I have developed.",
+ "project-1-headline": "BPLEWiki",
+ "project-1-text": "A forum website integrating various functionalities, co-developed with '祸', now open-sourced on Github.",
+ "leadto": "Go to",
+ "project-2-headline": "Soft Water Blog",
+ "project-2-text": "A blog based on Halo, where I frequently publish my technical learning notes.",
+ "project-3-headline": "OGAS 2.0 Chinese Documentation",
+ "project-3-text": "A Docsify project hosted on Github Pages. This site primarily provides the Chinese version of the OGAS 2.0 documentation.",
+ "footer_copyright": "© 2025 ThirstyWater. All rights reserved."
+}

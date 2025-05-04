@@ -1,0 +1,84 @@
+<meta name="keywords" content="个人主页, 口渴的水, 柔水, thirstywater">
+<div class="content" data-barba="container">
+    <title data-i18n="title">项目 - 口渴的水</title>
+    <style>
+         h1 {
+            font-weight: 400;
+        }
+
+        #info, h1 {
+            text-align: center;
+        }
+
+        #info {
+            margin-bottom: 20px;
+        }
+
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* 卡片之间的间距 */
+            /* 水平居中 */
+            justify-content: center;
+        }
+
+        #cards s-card {
+            flex: 1 1 calc(33.33% - 20px);
+            /* 每张卡片占大约1/3宽度，减去间距 */
+            max-width: calc(33.33% - 20px);
+            /* 限制最大宽度 */
+            box-sizing: border-box;
+            /* 确保padding和border不影响宽度 */
+        }
+
+        /* 响应式调整：屏幕较小时显示两列或一列 */
+        @media (max-width: 900px) {
+            #cards s-card {
+                flex: 1 1 calc(50% - 20px);
+                /* 两列 */
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            #cards s-card {
+                flex: 1 1 100%;
+                /* 一列 */
+                max-width: 100%;
+            }
+        }
+
+        s-card {}
+    </style>
+
+        <h1 data-i18n="h1"></h1>
+        <p data-i18n="p" id="info"></p>
+
+    <div id="cards">
+
+        <s-card type="outlined" clickable="true">
+            <img slot="image" src="https://pic.imgdb.cn/item/660eaab168eb935713b430d7.png">
+            <div slot="headline" data-i18n="project-1-headline"></div>
+            <div slot="text" data-i18n="project-1-text"></div>
+            <s-button slot="action" type="outlined" data-i18n="leadto" onclick="javascript:window.open('https://www.bplewiki.top')"></s-button>
+        </s-card>
+
+        <s-card type="outlined" clickable="true">
+            <img slot="image" src="https://pic1.imgdb.cn/item/6815e12158cb8da5c8d97070.jpg">
+            <div slot="headline" data-i18n="project-2-headline"></div>
+            <div slot="text" data-i18n="project-2-text"></div>
+            <s-button slot="action" type="outlined" data-i18n="leadto" onclick="javascript:window.open('https://blog.waterx.top')"></s-button>
+        </s-card>
+
+        <s-card type="outlined" clickable="true">
+            <img slot="image" src="https://i.stardots.io/thirstywater/1746265007519.svg">
+            <div slot="headline" data-i18n="project-3-headline"></div>
+            <div slot="text" data-i18n="project-3-text"></div>
+            <s-button slot="action" type="outlined" data-i18n="leadto" onclick="javascript:window.open('https://ogas.waterx.top')"></s-button>
+        </s-card>
+
+    </div>
+
+
+</div>
